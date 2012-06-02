@@ -62,6 +62,15 @@ auth.settings.reset_password_requires_verification = True
 from gluon.contrib.login_methods.rpx_account import use_janrain
 use_janrain(auth,filename='private/janrain.key')
 
+# authentication with social media
+if session.auth_with:
+    if session.auth_with == 'twitter':
+        print 'connect with twitter'
+    if session.auth_with == 'facebook':
+        print 'connect with facebook'
+
+session.auth_with=None
+
 #########################################################################
 ## Define your tables below (or better in another model file) for example
 ##

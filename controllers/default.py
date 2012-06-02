@@ -17,6 +17,13 @@ def index():
     response.flash = "Welcome to web2py!"
     return dict(message=T('Hello World'))
 
+def login():
+    if request.vars['social_media'] == 'twitter':
+        session.auth_with = 'twitter'
+    if request.vars['social_media'] == 'facebook':
+        session.auth_with = 'facebook'
+    redirect(URL('index'))
+
 def user():
     """
     exposes:

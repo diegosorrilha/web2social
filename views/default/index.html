@@ -6,8 +6,8 @@
 
 <h4/>Login:</h4>
 <ul>
-  <li>Twitter</li>
-  <li>Facebook</li>
+  <li><a href="{{=URL(r=request, f='login', vars={'social_media':'twitter'})}}">Twitter</a></li>
+  <li><a href="{{=URL(r=request, f='login', vars={'social_media':'facebook'})}}">Facebook</a></li>
 </ul>
 {{else:}}
 {{=BEAUTIFY(response._vars)}}
