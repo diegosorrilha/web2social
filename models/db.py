@@ -65,11 +65,23 @@ use_janrain(auth,filename='private/janrain.key')
 # authentication with social media
 if session.auth_with:
     if session.auth_with == 'twitter':
-        print 'connect with twitter'
+        from applications.web2social.modules import twitter_account
+        toa = local_import('twitter_oauth_data')
+        CLIENT_ID = toa.CLIENT_ID
+        CLIENT_SECRET = toa.CLIENT_SECRET
+        AUTH_URL = toa.AUTH_URL
+        TOKEN_URL = toa.TOKEN_URL
+        ACCESS_TOKEN_URL = toa.ACCESS_TOKEN_URL
+
+        auth.settings.login_form = twitter_account.TwitterAccount(globals(),
+                                                        CLIENT_ID,
+                                                        CLIENT_SECRET,
+                                                        AUTH_URL, TOKEN_URL,
+                                                        ACCESS_TOKEN_URL)
+
     if session.auth_with == 'facebook':
         print 'connect with facebook'
 
-session.auth_with=None
 
 #########################################################################
 ## Define your tables below (or better in another model file) for example
