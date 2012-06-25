@@ -44,7 +44,7 @@ auth = Auth(db, hmac_key=Auth.get_or_create_key())
 crud, service, plugins = Crud(db), Service(), PluginManager()
 
 ## create all tables needed by auth if not custom tables
-auth.define_tables()
+auth.define_tables(username=True)
 
 ## configure email
 mail=auth.settings.mailer
@@ -80,7 +80,8 @@ if session.auth_with:
                                                         ACCESS_TOKEN_URL)
 
     if session.auth_with == 'facebook':
-        print 'connect with facebook'
+        from applications.web2social.modules import facebook_account
+        auth.settings.login_form = facebook_account.FaceBookAccount(globals(), db)
 
 
 #########################################################################
