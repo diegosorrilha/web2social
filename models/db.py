@@ -56,7 +56,7 @@ mail.settings.login = 'username:password'
 auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
-
+auth.settings.table_user.username.requires = IS_NOT_IN_DB(db, auth.settings.table_user.username)
 ## if you need to use OpenID, Facebook, MySpace, Twitter, Linkedin, etc.
 ## register with janrain.com, write your domain:api_key in private/janrain.key
 from gluon.contrib.login_methods.rpx_account import use_janrain
@@ -82,7 +82,6 @@ if session.auth_with:
     if session.auth_with == 'facebook':
         from applications.web2social.modules import facebook_account
         auth.settings.login_form = facebook_account.FaceBookAccount(globals(), db)
-
 
 #########################################################################
 ## Define your tables below (or better in another model file) for example

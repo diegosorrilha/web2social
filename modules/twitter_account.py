@@ -22,4 +22,4 @@ class TwitterAccount(OAuthAccount):
         token = current.session.access_token
 
         return dict(first_name=u['screen_name'],
-                    registration_id=u['id'])
+                    username=u['screen_name'])
