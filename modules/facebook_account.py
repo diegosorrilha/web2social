@@ -2,8 +2,8 @@
 
 # Autenticação com Facebook
 
-CLIENT_ID ='185048221624484'
-CLIENT_SECRET ='be1dbf193675dc6f0bb58d7866bd633d'
+CLIENT_ID =''
+CLIENT_SECRET =''
 
 
 from facebook import GraphAPI, GraphAPIError
