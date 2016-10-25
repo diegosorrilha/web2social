@@ -44,6 +44,7 @@ class FaceBookAccount(OAuthAccount):
 
 
         if user:
-            return dict(first_name = user['first_name'],
-                        last_name = user['last_name'],
-                        username = user['id'])
+            first_name, last_name = user['name'].split(' ')
+            return dict(first_name=first_name,
+                        last_name=last_name,
+                        username=user['id'])
